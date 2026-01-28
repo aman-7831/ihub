@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Business - Aakshyata</title>
+    <link rel="shortcut icon" href="./Img/Favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #800000;
+            --secondary-color: #ffffff;
+            --accent-color: #c90c0c;
+            --bg-color: #F5F5F5;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-theme {
+            --primary-color: #800000;
+            --secondary-color: #121212;
+            --accent-color: #c90c0c;
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2a2a2a;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 14px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        .top-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--nav-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+        }
+
+        .contact-info span {
+            margin-bottom: 3px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .breadcrumb li {
+            margin: 0 10px;
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb li a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb li a:hover {
+            color: var(--accent-color);
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: '/';
+            margin-left: 10px;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        /* Business Intro */
+        .business-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+
+        .business-intro h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .business-intro p {
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Business Sectors Grid */
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .business-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .business-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .business-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .business-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .business-card:hover .business-image img {
+            transform: scale(1.05);
+        }
+
+        .business-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .business-content {
+            padding: 25px;
+        }
+
+        .business-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .business-content p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        .business-features {
+            margin-bottom: 20px;
+        }
+
+        .business-features h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .business-features ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .business-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .business-features li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            margin-top: 4px;
+            font-size: 14px;
+        }
+
+        .business-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+        }
+
+        .business-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--card-bg);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            padding: 30px 20px;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 5%;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .cta-button.secondary {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: var(--bg-color);
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .contact-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-button i {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 5% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #f0f0f0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        /* WhatsApp Popup */
+        .whatsapp-popup {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-popup:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-nav {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                margin: 20px 0;
+            }
+
+            .nav-links li {
+                margin: 0 15px;
+            }
+
+            .contact-info {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .business-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <a href="#">Careers</a>
+        <a href="#">Help & Support</a>
+        <a href="#">Sign Up</a>
+        <a href="#">Login</a>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="./Img/Website Header.png" height="60px">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="business.html" class="active">Our Business</a></li>
+            <li><a href="/members.html">Ihub Family</a></li>
+        </ul>
+        <div class="contact-info">
+            <span><i class="fas fa-phone"></i> +977- 9761444083 </span>
+            <span><i class="fas fa-envelope"></i> info@aakshyata.com</span>
+        </div>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <h1>Our Business Portfolio</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Our Business</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Business Intro -->
+    <section class="section">
+        <div class="business-intro">
+            <h2>Diverse Solutions for Every Industry</h2>
+            <p>At Aakshyata, we provide comprehensive business solutions across multiple sectors. Our expertise spans from traditional industries to cutting-edge digital services, ensuring we can meet the unique needs of every client.</p>
+            <p>With over a decade of experience, we've developed specialized approaches for each sector we serve, combining industry knowledge with innovative technology to deliver exceptional results.</p>
+        </div>
+
+        <!-- Business Sectors Grid -->
+        <h2 class="section-title">Our Business Sectors</h2>
+        <div class="business-grid">
+            <!-- Agriculture -->
+            <div class="business-card">
+                <div class="business-image">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80" alt="Agriculture">
+                    <div class="business-icon">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                </div>
+                <div class="business-content">
+                    <h3>Agriculture</h3>
+                    <p>Modernizing agriculture with technology-driven solutions for improved yield, sustainability, and profitability.</p>
+                    <div class="business-features">
+                        <h4>Our Services:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Precision farming solutions</li>
+                            <li><i class="fas fa-check"></i> Supply chain optimization</li>
+                            <li><i class="fas fa-check"></i> Agri-tech implementation</li>
+                            <li><i class="fas fa-check"></i> Market linkage platforms</li>
+                        </ul>
+                    </div>
+                    <a href="agriculture.html" class="business-link">View More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Consulting -->
+            <div class="business-card">
+                <div class="business-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Consulting">
+                    <div class="business-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+                <div class="business-content">
+                    <h3>Consulting</h3>
+                    <p>Strategic business consulting to help organizations navigate challenges and capitalize on opportunities.</p>
+                    <div class="business-features">
+                        <h4>Our Services:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Business strategy development</li>
+                            <li><i class="fas fa-check"></i> Operational efficiency analysis</li>
+                            <li><i class="fas fa-check"></i> Market research & analysis</li>
+                            <li><i class="fas fa-check"></i> Digital transformation consulting</li>
+                        </ul>
+                    </div>
+                    <a href="consulting.html" class="business-link">View More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Distribution -->
+            <div class="business-card">
+                <div class="business-image">
+                    <img src="https://images.unsplash.com/photo-1586528116314-48f3d011e8a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Distribution">
+                    <div class="business-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                </div>
+                <div class="business-content">
+                    <h3>Distribution</h3>
+                    <p>Efficient distribution network solutions to optimize supply chains and enhance market reach.</p>
+                    <div class="business-features">
+                        <h4>Our Services:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Logistics optimization</li>
+                            <li><i class="fas fa-check"></i> Warehouse management systems</li>
+                            <li><i class="fas fa-check"></i> Last-mile delivery solutions</li>
+                            <li><i class="fas fa-check"></i> Inventory management</li>
+                        </ul>
+                    </div>
+                    <a href="distribution.html" class="business-link">View More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="business-card">
+                <div class="business-image">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Education">
+                    <div class="business-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                </div>
+                <div class="business-content">
+                    <h3>Education</h3>
+                    <p>Transforming education through technology-enabled learning solutions and institutional development.</p>
+                    <div class="business-features">
+                        <h4>Our Services:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> E-learning platform development</li>
+                            <li><i class="fas fa-check"></i> Educational institution management</li>
+                            <li><i class="fas fa-check"></i> Curriculum digitization</li>
+                            <li><i class="fas fa-check"></i> Student information systems</li>
+                        </ul>
+                    </div>
+                    <a href="education.html" class="business-link">View More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Hospitality -->
+            <div class="business-card">
+                <div class="business-image">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Hospitality">
+                    <div class="business-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                </div>
+                <div class="business-content">
+                    <h3>Hospitality</h3>
+                    <p>Enhancing guest experiences and operational efficiency in the hospitality industry.</p>
+                    <div class="business-features">
+                        <h4>Our Services:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Hotel management systems</li>
+                            <li><i class="fas fa-check"></i> Reservation & booking platforms</li>
+                            <li><i class="fas fa-check"></i> Customer experience solutions</li>
+                            <li><i class="fas fa-check"></i> Revenue management tools</li>
+                        </ul>
+                    </div>
+                    <a href="hospitality.html" class="business-link">View More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Manufacturing -->
+            <div class="business-card">
+                <div class="business-image">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Manufacturing">
+                    <div class="business-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                </div>
+                <div class="business-content">
+                    <h3>Manufacturing</h3>
+                    <p>Driving manufacturing excellence through automation, process optimization, and smart factory solutions.</p>
+                    <div class="business-features">
+                        <h4>Our Services:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Production planning systems</li>
+                            <li><i class="fas fa-check"></i> Quality control solutions</li>
+                            <li><i class="fas fa-check"></i> Supply chain integration</li>
+                            <li><i class="fas fa-check"></i> Industrial IoT implementation</li>
+                        </ul>
+                    </div>
+                    <a href="manufacturing.html" class="business-link">View More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Real Estate -->
+            <div class="business-card">
+                <div class="business-image">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80" alt="Real Estate">
+                    <div class="business-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                </div>
+                <div class="business-content">
+                    <h3>Real Estate</h3>
+                    <p>Comprehensive real estate solutions including property management, development, and technology platforms.</p>
+                    <div class="business-features">
+                        <h4>Our Services:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Property management systems</li>
+                            <li><i class="fas fa-check"></i> Real estate CRM solutions</li>
+                            <li><i class="fas fa-check"></i> Virtual property tours</li>
+                            <li><i class="fas fa-check"></i> Investment analysis tools</li>
+                        </ul>
+                    </div>
+                    <a href="real-estate.html" class="business-link">View More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Digital Solutions -->
+            <div class="business-card">
+                <div class="business-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Digital Solutions">
+                    <div class="business-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+                <div class="business-content">
+                    <h3>Digital Solutions</h3>
+                    <p>End-to-end digital transformation services to help businesses thrive in the digital age.</p>
+                    <div class="business-features">
+                        <h4>Our Services:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Custom software development</li>
+                            <li><i class="fas fa-check"></i> Web & mobile applications</li>
+                            <li><i class="fas fa-check"></i> Cloud solutions & migration</li>
+                            <li><i class="fas fa-check"></i> Digital marketing services</li>
+                        </ul>
+                    </div>
+                    <a href="digital-solutions.html" class="business-link">View More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Event Management -->
+            <div class="business-card">
+                <div class="business-image">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Event Management">
+                    <div class="business-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </div>
+                <div class="business-content">
+                    <h3>Event Management</h3>
+                    <p>Comprehensive event planning and management services for corporate and social events.</p>
+                    <div class="business-features">
+                        <h4>Our Services:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Corporate event planning</li>
+                            <li><i class="fas fa-check"></i> Virtual & hybrid event solutions</li>
+                            <li><i class="fas fa-check"></i> Event marketing & promotion</li>
+                            <li><i class="fas fa-check"></i> Venue management systems</li>
+                        </ul>
+                    </div>
+                    <a href="event-management.html" class="business-link">View More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats">
+        <h2 class="section-title">Our Impact Across Industries</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">9</span>
+                <div class="stat-text">Business Sectors</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">500+</span>
+                <div class="stat-text">Projects Completed</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">95%</span>
+                <div class="stat-text">Client Satisfaction</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">10+</span>
+                <div class="stat-text">Countries Served</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Whether you're in agriculture, manufacturing, hospitality, or any other sector, we have the expertise to help you achieve your goals. Let's discuss how we can partner to drive your business forward.</p>
+        <div class="cta-buttons">
+            <a href="contact.html" class="cta-button">Get In Touch</a>
+            <a href="case-studies.html" class="cta-button secondary">View Case Studies</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2 class="section-title">Have Questions About Our Services?</h2>
+        <p>Our team is ready to provide detailed information about any of our business sectors and how we can help your organization.</p>
+        <br>
+        <a href="https://wa.me/9761444033" class="contact-button"><i class="fab fa-whatsapp"></i> Contact Us on WhatsApp</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Aakshyata</h3>
+                <p>Providing innovative business solutions since 2010. We help businesses thrive in the digital age.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+            
+            </div>
+            <div class="footer-column">
+                <h3>Our Business</h3>
+                <ul>
+                    <li><a href="oppo.html">Oppo Mobile Phones</a></li>
+                    <li><a href="consulting.html">Consulting</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Business Ave, Suite 100</li>
+                    <li><i class="fas fa-phone"></i> +977- 9761444083</li>
+                    <li><i class="fas fa-envelope"></i> info@aakshyata.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Aman Bhandari. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Popup -->
+    <a href="https://wa.me/9761444033" target="_blank">
+        <div class="whatsapp-popup" id="whatsappPopup">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+    </a>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeInUp 1s ease forwards`;
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.business-card, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

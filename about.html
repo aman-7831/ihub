@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Aakshyata</title>
+    <link rel="shortcut icon" href="./Img/Favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #800000;
+            --secondary-color: #ffffff;
+            --accent-color: #c90c0c;
+            --bg-color: #F5F5F5;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-theme {
+            --primary-color: #800000;
+            --secondary-color: #121212;
+            --accent-color: #c90c0c;
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2a2a2a;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 14px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        .top-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--nav-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+        }
+
+        .contact-info span {
+            margin-bottom: 3px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .breadcrumb li {
+            margin: 0 10px;
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb li a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb li a:hover {
+            color: var(--accent-color);
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: '/';
+            margin-left: 10px;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        /* About Intro */
+        .about-intro {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 50px;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Who We Are Section */
+        .who-we-are {
+            background-color: var(--card-bg);
+        }
+
+        .identity-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .identity-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .identity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .identity-card i {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .identity-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .identity-card p {
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* How We Work Section */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 60px;
+            right: -10%;
+            width: 20%;
+            height: 2px;
+            background-color: var(--primary-color);
+            z-index: 0;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .process-step:hover .step-number {
+            transform: scale(1.1);
+            background-color: var(--accent-color);
+        }
+
+        .process-step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .process-step p {
+            line-height: 1.6;
+        }
+
+        /* Mission & Values Section */
+        .mission-values {
+            background-color: var(--card-bg);
+        }
+
+        .mission-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .mission-statement, .values-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .mission-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .mission-card h3 i {
+            margin-right: 10px;
+        }
+
+        .mission-card p {
+            line-height: 1.7;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .value-item {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .value-item p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Insights Section */
+        .insights {
+            text-align: center;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .insight-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--primary-color);
+        }
+
+        .insight-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .insight-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .insight-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Network Section */
+        .network {
+            background-color: var(--card-bg);
+            text-align: center;
+        }
+
+        .network-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .network-logo {
+            flex: 0 0 150px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            padding: 15px;
+            transition: var(--transition);
+        }
+
+        .network-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .network-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .network-logo:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* Journey Timeline Section */
+        .journey {
+            background-color: var(--bg-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            top: 30px;
+            background-color: var(--card-bg);
+            transform: rotate(45deg);
+            box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -10px;
+            top: 30px;
+            background-color: var(--card-bg);
+            transform: rotate(45deg);
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: -15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-year {
+            right: -50px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-year {
+            left: -50px;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 1;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-icon {
+            right: -20px;
+            top: 20px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -20px;
+            top: 20px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .timeline-content p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: 25px 20px;
+        }
+
+        .member-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .member-info p {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .member-info .social-links {
+            display: flex;
+            justify-content: center;
+        }
+
+        .member-info .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            margin: 0 5px;
+            transition: var(--transition);
+        }
+
+        .member-info .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: var(--bg-color);
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .contact-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-button i {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 5% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #f0f0f0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        /* WhatsApp Popup */
+        .whatsapp-popup {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-popup:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-nav {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                margin: 20px 0;
+            }
+
+            .nav-links li {
+                margin: 0 15px;
+            }
+
+            .contact-info {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-intro {
+                flex-direction: column;
+            }
+
+            .about-content {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .process-step:not(:last-child)::after {
+                display: none;
+            }
+
+            .process-steps {
+                flex-direction: column;
+            }
+
+            .process-step {
+                margin-bottom: 30px;
+            }
+
+            /* Timeline Responsive */
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-year,
+            .timeline-item:nth-child(even) .timeline-year {
+                left: 15px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-icon,
+            .timeline-item:nth-child(even) .timeline-icon {
+                left: 11px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <a href="#">Careers</a>
+        <a href="#">Help & Support</a>
+        <a href="#">Sign Up</a>
+        <a href="#">Login</a>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="./Img/Website Header.png" height="60px">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="/our business.html">Our Business</a></li>
+            <li><a href="/members.html">Ihub Family</a></li>
+        </ul>
+        <div class="contact-info">
+            <span><i class="fas fa-phone"></i> +977- 97700000 </span>
+            <span><i class="fas fa-envelope"></i> info@ihub.com.np</span>
+        </div>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <h1>About Us</h1>
+            <ul class="breadcrumb">
+                <li><a href="/index.html">Home</a></li>
+                <li>About Us</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- About Intro Section -->
+    <section class="section about-intro">
+        <div class="about-content">
+            <h2>Our Story</h2>
+            <p>Aakshyata was founded with a vision to revolutionize the business landscape through innovative solutions and unwavering commitment to excellence. Since our inception, we have been dedicated to helping businesses thrive in the digital age.</p>
+            <p>Our journey began with a small team of passionate professionals who believed in the power of technology to transform businesses. Today, we have grown into a multifaceted organization with diverse expertise across various industries.</p>
+            <p>At Aakshyata, we don't just provide services; we build partnerships. Our client-centric approach ensures that we understand your unique challenges and deliver tailored solutions that drive real results.</p>
+        </div>
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Our Team">
+        </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section class="section who-we-are">
+        <h2 class="section-title">Who We Are</h2>
+        <div class="identity-cards">
+            <div class="identity-card">
+                <i class="fas fa-users"></i>
+                <h3>Our Identity</h3>
+                <p>Aakshyata is a dynamic business solutions provider with expertise in real estate, web development, data analytics, and digital marketing. We are innovators, strategists, and problem-solvers dedicated to driving growth for our clients.</p>
+            </div>
+            <div class="identity-card">
+                <i class="fas fa-eye"></i>
+                <h3>Our Vision</h3>
+                <p>To be the leading provider of integrated business solutions, recognized for our innovation, integrity, and transformative impact on businesses across industries.</p>
+            </div>
+            <div class="identity-card">
+                <i class="fas fa-bullseye"></i>
+                <h3>Our Purpose</h3>
+                <p>We exist to empower businesses with cutting-edge solutions that simplify complexity, drive efficiency, and unlock new opportunities for growth in an ever-evolving digital landscape.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="section">
+        <h2 class="section-title">How We Work</h2>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Discovery</h3>
+                <p>We begin by deeply understanding your business, challenges, and objectives through comprehensive consultations and analysis.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Strategy</h3>
+                <p>Our experts develop a customized strategy with clear milestones, deliverables, and success metrics tailored to your specific needs.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Execution</h3>
+                <p>We implement solutions using agile methodologies, ensuring flexibility and continuous improvement throughout the project lifecycle.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Optimization</h3>
+                <p>We continuously monitor, analyze, and refine our solutions to ensure they deliver maximum value and adapt to changing business needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values Section -->
+    <section class="section mission-values">
+        <h2 class="section-title">Mission & Values</h2>
+        <div class="mission-container">
+            <div class="mission-statement">
+                <div class="mission-card">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>To deliver innovative, data-driven business solutions that empower organizations to achieve sustainable growth, operational excellence, and competitive advantage in their respective markets.</p>
+                </div>
+                <div class="mission-card">
+                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <p>To be the most trusted partner for businesses seeking digital transformation, recognized for our commitment to excellence, innovation, and measurable client success.</p>
+                </div>
+            </div>
+            <div class="values-container">
+                <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">Our Core Values</h3>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <h4>Innovation</h4>
+                        <p>We constantly push boundaries and explore new technologies to deliver cutting-edge solutions.</p>
+                    </div>
+                    <div class="value-item">
+                        <h4>Integrity</h4>
+                        <p>We operate with transparency, honesty, and ethical practices in all our business dealings.</p>
+                    </div>
+                    <div class="value-item">
+                        <h4>Collaboration</h4>
+                        <p>We work as partners with our clients, fostering relationships built on trust and mutual success.</p>
+                    </div>
+                    <div class="value-item">
+                        <h4>Excellence</h4>
+                        <p>We strive for the highest quality in everything we do, setting new standards of performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section class="section insights">
+        <h2 class="section-title">Ihub in Numbers</h2>
+        <div class="insights-grid">
+            <div class="insight-card">
+                <span class="insight-number">14+</span>
+                <div class="insight-text">Years of Experience</div>
+            </div>
+            <div class="insight-card">
+                <span class="insight-number">500+</span>
+                <div class="insight-text">Projects Completed</div>
+            </div>
+            <div class="insight-card">
+                <span class="insight-number">50+</span>
+                <div class="insight-text">Team Members</div>
+            </div>
+            <div class="insight-card">
+                <span class="insight-number">95%</span>
+                <div class="insight-text">Client Satisfaction</div>
+            </div>
+            <div class="insight-card">
+                <span class="insight-number">15+</span>
+                <div class="insight-text">Industry Awards</div>
+            </div>
+            <div class="insight-card">
+                <span class="insight-number">10+</span>
+                <div class="insight-text">Countries Served</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Network Section -->
+    <section class="section network">
+        <h2 class="section-title">Our Network</h2>
+        <p style="max-width: 800px; margin: 0 auto 30px; line-height: 1.6;">We collaborate with industry leaders and technology partners to deliver comprehensive solutions that drive business success across various sectors.</p>
+        <div class="network-logos">
+            <div class="network-logo">
+                <i class="fab fa-microsoft fa-3x"></i>
+            </div>
+            <div class="network-logo">
+                <i class="fab fa-google fa-3x"></i>
+            </div>
+            <div class="network-logo">
+                <i class="fab fa-aws fa-3x"></i>
+            </div>
+            <div class="network-logo">
+                <i class="fab fa-slack fa-3x"></i>
+            </div>
+            <div class="network-logo">
+                <i class="fab fa-salesforce fa-3x"></i>
+            </div>
+            <div class="network-logo">
+                <i class="fab fa-adobe fa-3x"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline Section -->
+    <section class="section journey">
+        <h2 class="section-title">Our Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2010</div>
+                <div class="timeline-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Company Foundation</h3>
+                    <p>Aakshyata was founded with a vision to provide innovative business solutions. Started with a small team of 5 professionals working from a shared office space.</p>
+                    <p>Our first project was developing a custom CRM solution for a local retail business.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2013</div>
+                <div class="timeline-icon">
+                    <i class="fas fa-expand"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>First Expansion</h3>
+                    <p>Expanded our service portfolio to include digital marketing and web development. Moved to our first dedicated office space and grew our team to 15 members.</p>
+                    <p>Secured our first major corporate client, marking a significant milestone in our growth.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2016</div>
+                <div class="timeline-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Industry Recognition</h3>
+                    <p>Received the "Emerging Business of the Year" award. Expanded our operations to include real estate solutions and data analytics services.</p>
+                    <p>Our team grew to 35 professionals, and we served over 100 clients across various industries.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2019</div>
+                <div class="timeline-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>International Expansion</h3>
+                    <p>Began serving international clients and established partnerships with companies in Southeast Asia and Europe.</p>
+                    <p>Launched our proprietary project management platform to streamline client collaborations.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Digital Transformation Focus</h3>
+                    <p>Introduced AI-powered solutions and advanced data analytics services. Expanded our team to over 50 professionals with diverse expertise.</p>
+                    <p>Celebrated serving 500+ clients with a 95% satisfaction rate.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Current Milestones</h3>
+                    <p>Recognized as one of the top business solution providers in the region. Expanded our service offerings to include comprehensive event management and digital transformation consulting.</p>
+                    <p>Continuing to innovate and adapt to the evolving business landscape while maintaining our commitment to excellence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section">
+        <h2 class="section-title">Meet Our Leadership</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="./Img/CEO.png" alt="CEO">
+                </div>
+                <div class="member-info">
+                    <h3>Aakshyata Group</h3>
+                    <p>Chief Executive Officer</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="CTO">
+                </div>
+                <div class="member-info">
+                    <h3>Rajesh Sharma</h3>
+                    <p>Chief Technology Officer</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" alt="Marketing Director">
+                </div>
+                <div class="member-info">
+                    <h3>Priya Patel</h3>
+                    <p>Marketing Director</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Operations Head">
+                </div>
+                <div class="member-info">
+                    <h3>Sanjay Kumar</h3>
+                    <p>Head of Operations</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2 class="section-title">Ready to Work With Us?</h2>
+        <p>Let's discuss how we can help your business grow and achieve its goals.</p>
+        <br>
+        <a href="https://wa.me/9761444033" class="contact-button"><i class="fab fa-whatsapp"></i> Contact Us on WhatsApp</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Aakshyata</h3>
+                <p>Providing innovative business solutions since 2010. We help businesses thrive in the digital age.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Code of Conduct</a></li>
+                    <li><a href="#">News & Media</a></li>
+                    <li><a href="#">Needful Documents</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Leadership Team</a></li>
+                    <li><a href="#">Sustanibility</a></li>
+                    <li><a href="#">Awards & Recognition</a></li>
+                    <li><a href="#">Career</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Business Ave, Suite 100</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@aakshyata.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Aman Bhandari. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Popup -->
+    <a href="https://wa.me/9761444033" target="_blank">
+        <div class="whatsapp-popup" id="whatsappPopup">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+    </a>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Timeline Animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        function checkTimelineVisibility() {
+            const triggerBottom = window.innerHeight * 0.8;
+            
+            timelineItems.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                
+                if (itemTop < triggerBottom) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+        
+        // Initial check
+        checkTimelineVisibility();
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkTimelineVisibility);
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeInUp 1s ease forwards`;
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.value-card, .team-member, .insight-card, .identity-card, .process-step, .mission-card, .value-item, .network-logo, .about-content, .about-image').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Aakshyata</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #800000;
+            --secondary-color: #ffffff;
+            --accent-color: #c90c0c;
+            --bg-color: #F5F5F5;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-theme {
+            --primary-color: #800000;
+            --secondary-color: #121212;
+            --accent-color: #c90c0c;
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2a2a2a;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 14px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        .top-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--nav-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+        }
+
+        .contact-info span {
+            margin-bottom: 3px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .breadcrumb li {
+            margin: 0 10px;
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb li a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb li a:hover {
+            color: var(--accent-color);
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: '/';
+            margin-left: 10px;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        /* Organizational Chart */
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .org-level {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .org-level::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background-color: var(--primary-color);
+        }
+
+        .org-level:first-child::before {
+            display: none;
+        }
+
+        .org-node {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            width: 250px;
+            margin: 0 20px 40px;
+            position: relative;
+            transition: var(--transition);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .org-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .org-node.ceo {
+            border-top-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .org-node.ceo:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .node-connector {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background-color: var(--primary-color);
+        }
+
+        .node-connector.horizontal {
+            width: 100px;
+            height: 2px;
+            top: 50%;
+            left: -100px;
+        }
+
+        .node-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 4px solid var(--primary-color);
+        }
+
+        .node-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .node-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .node-position {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .node-department {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .node-contact {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .node-contact a {
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .node-contact a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Department Details */
+        .department-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .department-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .department-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .department-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .department-name {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .department-description {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .department-team {
+            list-style: none;
+        }
+
+        .department-team li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .team-member {
+            font-weight: 500;
+        }
+
+        .team-role {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Team Stats */
+        .team-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .stat-item {
+            margin: 20px;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: var(--bg-color);
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .contact-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-button i {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 5% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #f0f0f0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        /* WhatsApp Popup */
+        .whatsapp-popup {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-popup:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-nav {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                margin: 20px 0;
+            }
+
+            .nav-links li {
+                margin: 0 15px;
+            }
+
+            .contact-info {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .org-node {
+                margin: 0 10px 30px;
+            }
+
+            .node-connector.horizontal {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <a href="login.html">Client Login</a>
+        <a href="support.html">Help & Support</a>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="./Img/Website Header.png" height="60px">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="business.html">Our Business</a></li>
+            <li><a href="team.html" class="active">Aakshyata Family</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="offers.html">Special Offers</a></li>
+        </ul>
+        <div class="contact-info">
+            <span><i class="fas fa-phone"></i> +977- 9761444083 </span>
+            <span><i class="fas fa-envelope"></i> sales@aakshyata.com</span>
+        </div>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <h1>Our Aakshyata Family</h1>
+            <p>Meet the talented individuals and leaders who drive innovation and excellence across all departments at Aakshyata.</p>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Aakshyata Family</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Organizational Chart -->
+    <section class="section">
+        <h2 class="section-title">Leadership Hierarchy</h2>
+        <div class="org-chart">
+            <!-- Level 1: CEO -->
+            <div class="org-level">
+                <div class="org-node ceo">
+                    <div class="node-photo">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="CEO">
+                    </div>
+                    <h3 class="node-name">Rajiv Sharma</h3>
+                    <p class="node-position">Chief Executive Officer</p>
+                    <p class="node-department">Executive Leadership</p>
+                    <div class="node-contact">
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 2: Department Heads -->
+            <div class="org-level">
+                <div class="org-node">
+                    <div class="node-connector"></div>
+                    <div class="node-photo">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="CTO">
+                    </div>
+                    <h3 class="node-name">Priya Adhikari</h3>
+                    <p class="node-position">Chief Technology Officer</p>
+                    <p class="node-department">Technology Department</p>
+                    <div class="node-contact">
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="org-node">
+                    <div class="node-connector"></div>
+                    <div class="node-photo">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="CMO">
+                    </div>
+                    <h3 class="node-name">Amit Gurung</h3>
+                    <p class="node-position">Chief Marketing Officer</p>
+                    <p class="node-department">Marketing Department</p>
+                    <div class="node-contact">
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="org-node">
+                    <div class="node-connector"></div>
+                    <div class="node-photo">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="COO">
+                    </div>
+                    <h3 class="node-name">Sunita Thapa</h3>
+                    <p class="node-position">Chief Operations Officer</p>
+                    <p class="node-department">Operations Department</p>
+                    <div class="node-contact">
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 3: Team Leads -->
+            <div class="org-level">
+                <div class="org-node">
+                    <div class="node-connector"></div>
+                    <div class="node-photo">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Web Lead">
+                    </div>
+                    <h3 class="node-name">Bikram Joshi</h3>
+                    <p class="node-position">Web Development Lead</p>
+                    <p class="node-department">Technology Department</p>
+                    <div class="node-contact">
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="org-node">
+                    <div class="node-connector"></div>
+                    <div class="node-photo">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="SEO Lead">
+                    </div>
+                    <h3 class="node-name">Anita K.C.</h3>
+                    <p class="node-position">SEO & Analytics Lead</p>
+                    <p class="node-department">Marketing Department</p>
+                    <div class="node-contact">
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="org-node">
+                    <div class="node-connector"></div>
+                    <div class="node-photo">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Design Lead">
+                    </div>
+                    <h3 class="node-name">Suman Rai</h3>
+                    <p class="node-position">UI/UX Design Lead</p>
+                    <p class="node-department">Technology Department</p>
+                    <div class="node-contact">
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="org-node">
+                    <div class="node-connector"></div>
+                    <div class="node-photo">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Content Lead">
+                    </div>
+                    <h3 class="node-name">Rina Magar</h3>
+                    <p class="node-position">Content Marketing Lead</p>
+                    <p class="node-department">Marketing Department</p>
+                    <div class="node-contact">
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Department Details -->
+    <section class="section">
+        <h2 class="section-title">Department Overview</h2>
+        <div class="department-details">
+            <!-- Technology Department -->
+            <div class="department-card">
+                <div class="department-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="department-name">Technology Department</h3>
+                <p class="department-description">Our tech team builds innovative digital solutions using cutting-edge technologies to deliver exceptional user experiences.</p>
+                <ul class="department-team">
+                    <li>
+                        <span class="team-member">Priya Adhikari</span>
+                        <span class="team-role">CTO</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Bikram Joshi</span>
+                        <span class="team-role">Web Development Lead</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Suman Rai</span>
+                        <span class="team-role">UI/UX Design Lead</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Ramesh Basnet</span>
+                        <span class="team-role">Backend Developer</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Sita Poudel</span>
+                        <span class="team-role">Frontend Developer</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Marketing Department -->
+            <div class="department-card">
+                <div class="department-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3 class="department-name">Marketing Department</h3>
+                <p class="department-description">Our marketing experts create compelling campaigns that connect brands with their target audiences and drive growth.</p>
+                <ul class="department-team">
+                    <li>
+                        <span class="team-member">Amit Gurung</span>
+                        <span class="team-role">CMO</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Anita K.C.</span>
+                        <span class="team-role">SEO & Analytics Lead</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Rina Magar</span>
+                        <span class="team-role">Content Marketing Lead</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Kiran Shrestha</span>
+                        <span class="team-role">Social Media Specialist</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Prakash Thapa</span>
+                        <span class="team-role">PPC Specialist</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Operations Department -->
+            <div class="department-card">
+                <div class="department-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3 class="department-name">Operations Department</h3>
+                <p class="department-description">Our operations team ensures smooth business processes, client satisfaction, and efficient project delivery.</p>
+                <ul class="department-team">
+                    <li>
+                        <span class="team-member">Sunita Thapa</span>
+                        <span class="team-role">COO</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Bishal Karki</span>
+                        <span class="team-role">Project Manager</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Sabina Tamang</span>
+                        <span class="team-role">Client Relations Manager</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Nabin Chhetri</span>
+                        <span class="team-role">Quality Assurance Lead</span>
+                    </li>
+                    <li>
+                        <span class="team-member">Mina Limbu</span>
+                        <span class="team-role">Operations Coordinator</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Stats -->
+    <section class="section">
+        <h2 class="section-title">Our Team in Numbers</h2>
+        <div class="team-stats">
+            <div class="stat-item">
+                <div class="stat-value">45+</div>
+                <div class="stat-label">Team Members</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Departments</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">5+</div>
+                <div class="stat-label">Years Experience Avg.</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">150+</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2 class="section-title">Join Our Family</h2>
+        <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem;">
+            Interested in joining our talented team? We're always looking for passionate individuals to help us grow and innovate.
+        </p>
+        <a href="careers.html" class="contact-button">
+            <i class="fas fa-briefcase"></i> View Open Positions
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="business.html">Our Business</a></li>
+                    <li><a href="team.html">Aakshyata Family</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Digital Marketing</a></li>
+                    <li><a href="#">E-commerce Solutions</a></li>
+                    <li><a href="#">SEO Services</a></li>
+                    <li><a href="#">Brand Identity</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +977-9761444083</li>
+                    <li><i class="fas fa-envelope"></i> sales@aakshyata.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Marketing</a></li>
+                    <li><a href="#">Operations</a></li>
+                    <li><a href="#">Sales</a></li>
+                    <li><a href="#">Human Resources</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Aakshyata. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Popup -->
+    <div class="whatsapp-popup">
+        <a href="https://wa.me/9779761444083" target="_blank" style="color: white;">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            
+            if (document.body.classList.contains('dark-theme')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Add animation to elements on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.org-node, .department-card, .stat-item');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state for animation
+            const animatedElements = document.querySelectorAll('.org-node, .department-card, .stat-item');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            // Initial check
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>

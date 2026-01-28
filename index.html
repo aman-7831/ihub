@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakshyata</title>
+     <link rel="shortcut icon" href="./Img/Favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #fe0000;
+            --secondary-color: #ffffff;
+            --accent-color: #2f0e0e94;
+            --bg-color: #F5F5F5;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-theme {
+            --primary-color: #fe0000;
+            --secondary-color: #121212;
+            --accent-color: #c90c0c;
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2a2a2a;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 14px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        .top-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--nav-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+        }
+
+        .contact-info span {
+            margin-bottom: 3px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Offers Section */
+        .offers {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .offer-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .offer-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .offer-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .offer-card p {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        /* CEO Message */
+        .ceo-message {
+            padding: 80px 5%;
+            background-color: var(--card-bg);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .ceo-image {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 50px;
+        }
+
+        .ceo-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .ceo-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .ceo-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .ceo-content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .ceo-signature {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: 20px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--primary-color);
+        }
+
+        .service-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .service-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* Blog Section */
+        .blog {
+            padding: 80px 5%;
+            background-color: var(--card-bg);
+            text-align: center;
+        }
+
+        .blog-carousel {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .blog-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-slide {
+            min-width: 100%;
+            padding: 0 15px;
+        }
+
+        .blog-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .blog-content p {
+            margin-bottom: 15px;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--primary-color);
+        }
+
+        .blog-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .blog-prev, .blog-next {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .blog-prev:hover, .blog-next:hover {
+            background-color: var(--accent-color);
+        }
+
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 5%;
+            background-color: var(--bg-color);
+            text-align: center;
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            display: none;
+            padding: 30px;
+            animation: fadeIn 1s ease;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-content {
+            background-color: var(--bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-content::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid var(--bg-color);
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .client-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .client-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .client-details h4 {
+            margin-bottom: 5px;
+        }
+
+        .client-details p {
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .testimonial-dot.active {
+            background-color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: white;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .contact-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-button i {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 5% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #f0f0f0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        /* WhatsApp Popup */
+        .whatsapp-popup {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-popup:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        .popup-content {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 300px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .whatsapp-popup.active .popup-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .popup-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .popup-content p {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .popup-content a {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .popup-content a:hover {
+            background-color: #128C7E;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-nav {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                margin: 20px 0;
+            }
+
+            .nav-links li {
+                margin: 0 15px;
+            }
+
+            .contact-info {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .ceo-message {
+                flex-direction: column;
+            }
+
+            .ceo-image {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <a href="#">Careers</a>
+        <a href="#">Help & Support</a>
+        <a href="#">Sign Up</a>
+        <a href="#">Login</a>
+        
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="./Img/logo.png" height="80px">
+        </div>
+        <ul class="nav-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/our business.html">Our Business</a></li>
+            <li><a href="/members.html">Ihub Family</a></li>
+        </ul>
+        <div class="contact-info">
+            <span><i class="fas fa-phone"></i> +977 9801097302 </span>
+            <span><i class="fas fa-envelope"></i> info@ihub.com.np</span>
+        </div>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section with Slideshow -->
+    <section class="hero">
+        <div class="slideshow">
+            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://eu-en.segway.com/content/dam/segway-ninebot/eu/en/segway/TopBanner_MAXG3_PC.webp')"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://www.oppo.com/content/dam/oppo/common/mkt/v2-2/a6-pro-series/featured-products/2624-920-red-v1.jpg')"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://www.b360nepal.com/storage/wp-content/uploads/2023/02/Segway-Ninebot-N100-5.jpg')"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Where Technology Meets Motion</h1>
+            <p>Trading power, performance, and progress</p>
+            <a href="#" class="cta-button">Explore Our Services</a>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers">
+        <h2 class="section-title">Offers Designed for You</h2>
+        <div class="offers-grid">
+            <div class="offer-card">
+                <i class="fas fa-rocket"></i>
+                <h3>for Government Institutions</h3>
+                <p>Efficient technology for better public service.</p>
+            </div>
+            <div class="offer-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>For Corporate & Enterprises</h3>
+                <p>Boost productivity with smart movement and smart devices</p>
+            </div>
+            <div class="offer-card">
+                <i class="fas fa-crown"></i>
+                <h3>For Individual & Normal Users</h3>
+                <p>Affordable technology for your daily journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Message -->
+    <section class="ceo-message">
+        <div class="ceo-image">
+            <img src="./Img/Lokesh Oli.jpg" alt="CEO">
+        </div>
+        <div class="ceo-content">
+            <h2>Message From Our Leadership</h2>
+            <p>At iHub Pvt. Ltd., we specialize in trading Segway electric scooters and OPPO mobile phones, delivering smart mobility and reliable technology for everyday use.</p>
+            <p>We are committed to quality, value, and trust, serving government institutions, corporate clients, and individual customers with dependable products and professional service.</p>
+            <p class="ceo-signature">- Managing Director, iHub Pvt. Ltd.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-home"></i>
+                <h3>Electric Scooter Trading</h3>
+                <p>We supply genuine Segway electric scooters designed for efficient, eco-friendly, and modern mobility solutions</p>
+                <a href="/shop.html" class="service-link">Shop Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-bullhorn"></i>
+                <h3>Mobile Phone Trading</h3>
+                <p>We offer a wide range of OPPO mobile phones, delivering smart features, performance, and dependable connectivity</p>
+                <a href="/shop.html" class="service-link">Shop Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p>Have a project in mind? Let's discuss how we can help your business grow.</p>
+        <br>
+        <a href="https://wa.me/9801097302" class="contact-button"><i class="fab fa-whatsapp"></i> Contact Us on WhatsApp</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>ihub</h3>
+                <p>Driving smarter mobility and stronger connectivity with Segway scooters and OPPO smartphones.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="/members.html">Our Leadership Team</a></li>
+                    <li><a href="/our business.html">Our Business</a></li>
+                    <li><a href="/shop.html">Stores </a></li>
+                    <li><a href="#">Career</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Bijulibazar, Kathmandu</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@pihub.com.np</li>
+                    <li><i class="fas fa-clock"></i> Sun-Fri: 10am-6pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 ihub Pvt. Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Popup -->
+     <a href="https://wa.me/9801097302" target="_blank">
+    <div class="whatsapp-popup" id="whatsappPopup">
+         <i class="fab fa-whatsapp"></i>
+        <!-- <div class="popup-content">
+            <h3>Chat with Us</h3>
+            <p>Have questions? Our team is here to help via WhatsApp.</p>
+            <a href="https://wa.me/+977-9861437372" target="_blank">Start Chat</a>
+        </div> -->
+    </div></a>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        // Change slide every 5 seconds
+        setInterval(nextSlide, 5000);
+
+         // Blog Carousel
+        const blogSlides = document.getElementById('blogSlides');
+        const blogPrev = document.getElementById('blogPrev');
+        const blogNext = document.getElementById('blogNext');
+        let blogPosition = 0;
+        const blogSlideCount = document.querySelectorAll('.blog-slide').length;
+        
+        blogNext.addEventListener('click', () => {
+            if (blogPosition > -(blogSlideCount - 1) * 100) {
+                blogPosition -= 100;
+                blogSlides.style.transform = `translateX(${blogPosition}%)`;
+            }
+        });
+        
+        blogPrev.addEventListener('click', () => {
+            if (blogPosition < 0) {
+                blogPosition += 100;
+                blogSlides.style.transform = `translateX(${blogPosition}%)`;
+            }
+        });
+
+        // Testimonial Slider
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        
+        testimonialDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const slideIndex = dot.getAttribute('data-slide');
+                
+                testimonialSlides.forEach(slide => slide.classList.remove('active'));
+                testimonialDots.forEach(d => d.classList.remove('active'));
+                
+                testimonialSlides[slideIndex].classList.add('active');
+                dot.classList.add('active');
+            });
+        });
+
+        // WhatsApp Popup
+        const whatsappPopup = document.getElementById('whatsappPopup');
+        
+        whatsappPopup.addEventListener('click', () => {
+            whatsappPopup.classList.toggle('active');
+        });
+
+        // Close popup when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!whatsappPopup.contains(e.target)) {
+                whatsappPopup.classList.remove('active');
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeInUp 1s ease forwards`;
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.offer-card, .service-card, .ceo-content, .ceo-image').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
